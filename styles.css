@@ -1,0 +1,195 @@
+/* Albert Whitted Flying Club — brand colors from logo */
+:root {
+  --orange: #e86b2a;
+  --navy: #1a2e44;
+  --white: #fff;
+  --off-white: #f8f8f8;
+  --text: #2c3e50;
+  --text-muted: #5a6c7d;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--white);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--navy);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--orange);
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--white);
+  border-bottom: 3px solid var(--orange);
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  height: 56px;
+  width: auto;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 1.5rem 5rem;
+  background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%);
+}
+
+.hero-logo {
+  margin: 0 auto 1.5rem;
+  width: 180px;
+  height: 180px;
+}
+
+.hero-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.02em;
+}
+
+.hero-tagline {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* About */
+.about {
+  padding: 4rem 1.5rem;
+  background: var(--white);
+}
+
+.about-inner {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.about h2 {
+  margin: 0 0 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.about-lead {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.about p {
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+
+.about p:last-child {
+  margin-bottom: 0;
+}
+
+/* Contact */
+.contact {
+  padding: 4rem 1.5rem;
+  background: var(--off-white);
+}
+
+.contact-inner {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.contact h2 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.contact p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* Footer */
+.site-footer {
+  padding: 1.5rem;
+  text-align: center;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.875rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  color: var(--white);
+}
+
+@media (min-width: 640px) {
+  .site-header {
+    padding: 1rem 2rem;
+  }
+
+  .hero {
+    padding: 5rem 2rem 6rem;
+  }
+
+  .hero-logo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .about,
+  .contact {
+    padding: 5rem 2rem;
+  }
+}
