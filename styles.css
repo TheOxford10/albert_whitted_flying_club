@@ -201,6 +201,83 @@ a:hover {
   font-style: italic;
 }
 
+/* Contact: intro + embedded Google Form */
+.contact-intro {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 28rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--navy);
+  font-size: 0.9375rem;
+}
+
+.contact-form input {
+  padding: 0.6rem 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 2px solid var(--navy);
+  border-radius: 6px;
+  background: var(--white);
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form input:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(232, 107, 42, 0.2);
+}
+
+.contact-form input::placeholder {
+  color: var(--text-muted);
+}
+
+.form-submit {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--orange);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.form-submit:hover {
+  background: #d45a1f;
+}
+
+.form-submit:active {
+  transform: scale(0.98);
+}
+
+.form-success-message {
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(26, 46, 68, 0.08);
+  border-left: 4px solid var(--orange);
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--navy);
+}
+
 /* Current members: heading + grid aligned, centered block */
 .members-section {
   max-width: 36rem;

@@ -27,8 +27,37 @@
 
     <main class="main">
       <div class="page-content">
-        <h2>Contact info</h2>
-        <p class="page-placeholder">Contact details and sign-up information coming soon.</p>
+        <h2>Contact us</h2>
+        <p class="contact-intro">Interested in joining? Fill out the form below and we’ll get back to you.</p>
+        <form class="contact-form" id="awfc-contact-form">
+          <div class="form-group">
+            <label for="applicant-name">Name of applicant</label>
+            <input type="text" id="applicant-name" name="applicant_name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="applicant-age">Age of applicant</label>
+            <input type="number" id="applicant-age" name="applicant_age" min="1" max="120" required>
+          </div>
+          <div class="form-group">
+            <label for="applicant-email">Email of applicant</label>
+            <input type="email" id="applicant-email" name="applicant_email" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="parent-name">Name of parent</label>
+            <input type="text" id="parent-name" name="parent_name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="parent-email">Email of parent</label>
+            <input type="email" id="parent-email" name="parent_email" required autocomplete="email">
+          </div>
+          <button type="submit" class="form-submit">Submit</button>
+        </form>
+        <p class="form-success-message" id="form-success-message" hidden>
+          Thank you! Your application has been submitted. We’ll be in touch soon.
+        </p>
+        <!-- Hidden form used to POST to Google Forms (avoids CORS); response loads in iframe -->
+        <iframe name="google-form-iframe" id="google-form-iframe" title="Form response" hidden></iframe>
+        <form id="google-form-submit" action="https://docs.google.com/forms/d/e/1FAIpQLSchjse1UtikUEOWWcldJmtl30pYATVOY1YdIl1p4ix-vVeiQQ/formResponse" method="POST" target="google-form-iframe" style="display: none;"></form>
       </div>
     </main>
   </div>
@@ -36,5 +65,47 @@
   <footer class="site-footer">
     <p>&copy; Albert Whitted Flying Club. A 501(c)(3) nonprofit.</p>
   </footer>
+
+  <script>
+    (function () {
+      var ENTRY_IDS = {
+        applicant_name: '1244976978',
+        applicant_email: '933375847',
+        applicant_age: '808924766',
+        parent_name: '1798566137',
+        parent_email: '687230613'
+      };
+
+      var form = document.getElementById('awfc-contact-form');
+      var successMsg = document.getElementById('form-success-message');
+      var googleForm = document.getElementById('google-form-submit');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (ENTRY_IDS.applicant_name.indexOf('REPLACE') !== -1) {
+          alert('Form is not configured: entry IDs must be set. See instructions in contact.html.');
+          return;
+        }
+        googleForm.innerHTML = '';
+        var fields = [
+          { name: 'applicant_name', entryId: ENTRY_IDS.applicant_name },
+          { name: 'applicant_email', entryId: ENTRY_IDS.applicant_email },
+          { name: 'applicant_age', entryId: ENTRY_IDS.applicant_age },
+          { name: 'parent_name', entryId: ENTRY_IDS.parent_name },
+          { name: 'parent_email', entryId: ENTRY_IDS.parent_email }
+        ];
+        fields.forEach(function (f) {
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'entry.' + f.entryId;
+          input.value = form.querySelector('[name="' + f.name + '"]').value;
+          googleForm.appendChild(input);
+        });
+        googleForm.submit();
+        form.setAttribute('hidden', '');
+        successMsg.removeAttribute('hidden');
+      });
+    })();
+  </script>
 </body>
 </html>
