@@ -47,14 +47,41 @@
       return;
     }
     if (contentBlock) contentBlock.hidden = false;
+    fillPortalLinks();
   }
 
   function fillPortalLinks() {
     var links = window.AWFC_PORTAL_LINKS || {};
     var mn = portalEl('portal-link-meeting-notes');
-    if (mn && links.meetingNotes && links.meetingNotes.indexOf('REPLACE') === -1) {
-      mn.href = links.meetingNotes;
+    if (!mn) return;
+    var hint = portalEl('portal-link-meeting-notes-hint');
+    var url = (links.meetingNotes && String(links.meetingNotes).trim()) || '';
+    var existing = (mn.getAttribute('href') || '').trim();
+
+    // Prefer config URL; if missing/placeholder, keep a valid https href already in HTML
+    if (!url || /REPLACE/i.test(url)) {
+      if (existing.indexOf('https://') === 0 || existing.indexOf('http://') === 0) {
+        mn.removeAttribute('aria-disabled');
+        if (hint) hint.hidden = true;
+        return;
+      }
+      mn.href = 'javascript:void(0)';
+      mn.setAttribute('aria-disabled', 'true');
+      if (hint) hint.hidden = false;
+      return;
     }
+    if (url.indexOf('http://') !== 0 && url.indexOf('https://') !== 0) {
+      if (existing.indexOf('https://') === 0) {
+        mn.removeAttribute('aria-disabled');
+        if (hint) hint.hidden = true;
+        return;
+      }
+      if (hint) hint.hidden = false;
+      return;
+    }
+    mn.href = url;
+    mn.removeAttribute('aria-disabled');
+    if (hint) hint.hidden = true;
   }
 
   auth.onAuthStateChanged(function (user) {
