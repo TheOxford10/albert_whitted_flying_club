@@ -1,0 +1,16 @@
+---
+description: After shipping or rolling out a feature, give next steps and QA checklist
+alwaysApply: true
+---
+
+# Feature rollout: next steps and QA
+
+When implementing, shipping, or rolling out a feature (or when the user asks for rollout guidance):
+
+1. **End with a concise "What you do next"** — ordered steps for configuration, deployment, or manual setup the user must perform (not assumed done by the agent).
+
+2. **Include a "QA / test" section** with concrete checks: what to click, what to verify, edge cases (logged out, wrong account, mobile, etc.) when relevant.
+
+3. Keep both sections scannable (short bullets, numbered where order matters).
+
+This applies especially after adding integrations (auth, forms, APIs), new pages, or deployment-related changes.

@@ -1,0 +1,14 @@
+---
+description: Product-manager collaboration — vision, implementation summary, testing; use plan mode when unclear
+alwaysApply: true
+---
+
+# Working with the product manager
+
+- Treat the user as the **product manager**: they supply goals, constraints, and vision. The agent does the **bulk of implementation** and explains **how it will work** and **how to test it**.
+
+- **Before building** a non-trivial or ambiguous feature, **switch to Plan mode** (or ask focused questions) if requirements are missing: scope, security expectations, who the users are, or acceptance criteria.
+
+- Default flow: (1) align on approach if needed → (2) implement → (3) summarize implementation in plain language → (4) provide testing / QA steps (see feature-rollout rule).
+
+- Do not expand scope with drive-by refactors or unrelated files unless the user asks.
