@@ -391,6 +391,16 @@ a:hover {
   }
 }
 
+/* Member portal — hide panels until auth UI state is applied */
+.portal-page.awfc-waiting-auth {
+  min-height: 10rem;
+}
+
+.portal-page.awfc-waiting-auth .portal-panel {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Member portal */
 .portal-page .portal-intro {
   margin-bottom: 1.25rem;

@@ -6,6 +6,10 @@
       alert('Configure js/firebase-config.js with your Firebase web app values first.');
     };
     window.awfcSignOut = function () {};
+    document.addEventListener('DOMContentLoaded', function () {
+      var root = document.getElementById('portal-page-root');
+      if (root) root.classList.remove('awfc-waiting-auth');
+    });
     return;
   }
 
@@ -23,6 +27,8 @@
 
   function updatePortalUI(user, isMember) {
     if (!isMembersPortalPage()) return;
+    var root = portalEl('portal-page-root');
+    if (root) root.classList.remove('awfc-waiting-auth');
     var loginBlock = portalEl('portal-login');
     var deniedBlock = portalEl('portal-denied');
     var contentBlock = portalEl('portal-content');
