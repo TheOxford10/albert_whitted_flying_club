@@ -13,12 +13,6 @@
   var auth = firebase.auth();
   var db = firebase.firestore();
 
-  function showMemberNav(show) {
-    document.querySelectorAll('.sidebar-nav-item-members').forEach(function (el) {
-      el.hidden = !show;
-    });
-  }
-
   function isMembersPortalPage() {
     return /members\.html$/.test(window.location.pathname);
   }
@@ -61,14 +55,12 @@
     fillPortalLinks();
 
     if (!user) {
-      showMemberNav(false);
       updatePortalUI(null, false);
       return;
     }
 
     var email = user.email;
     if (!email) {
-      showMemberNav(false);
       updatePortalUI(user, false);
       return;
     }
@@ -78,12 +70,10 @@
       .get()
       .then(function (snap) {
         var isMember = snap.exists;
-        showMemberNav(isMember);
         updatePortalUI(user, isMember);
       })
       .catch(function (err) {
         console.error('AWFC member check failed', err);
-        showMemberNav(false);
         updatePortalUI(user, false);
       });
   });
